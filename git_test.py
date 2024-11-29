@@ -1,5 +1,6 @@
 from prefect import flow, task
 from prefect.cache_policies import NONE
+from datetime import datetime
 
 
 @task(log_prints=True, cache_policy=NONE)
@@ -18,12 +19,12 @@ def orchestrate_entity_workflow(entity_to_process=None, input_data=None):
     -------
     None
     """
-    print(f"========= START TIME -> =========")
+    print(f"========= START TIME -> {datetime.now()} =========")
     print(f"Processing entity - '{entity_to_process}'...")
 
 
     print(f"Processed entity - '{entity_to_process}' successfully.")
-    print(f"========= END TIME -> =========")
+    print(f"========= END TIME -> {datetime.now()} =========")
 
 
 @flow(log_prints=True)
